@@ -4,7 +4,7 @@
   "description": "My take on the amazing tut at http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --require ./test/test-helper.js --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
