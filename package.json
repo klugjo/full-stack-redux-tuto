@@ -1,0 +1,37 @@
+{
+  "name": "full-stack-redux-tuto",
+  "version": "1.0.0",
+  "description": "My take on the amazing tut at http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klugjo/full-stack-redux-tuto.git"
+  },
+  "keywords": [],
+  "author": "Klughertz Jonathan <klughertz.j@gmail.com> (http://klugjo.github.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klugjo/full-stack-redux-tuto/issues"
+  },
+  "homepage": "https://github.com/klugjo/full-stack-redux-tuto#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-preset-es2015": "^6.5.0",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.5.3",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "immutable": "^3.7.6"
+  }
+}
