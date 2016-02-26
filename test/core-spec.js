@@ -113,49 +113,37 @@ describe('application logic', () => {
         it('creates a tally for the voted entry', () => {
 
             const state = Map({
-                vote: Map({
-                    pair: List.of('Sonatine', 'Hana Bi')
-                }),
-                entries: List.of('Zatoichi')
+                pair: List.of('Sonatine', 'Hana Bi')
             });
 
             const nextState = vote(state, 'Sonatine');
 
             expect(nextState).to.equal(Map({
-                vote: Map({
-                    pair: List.of('Sonatine', 'Hana Bi'),
-                    tally: Map({
-                        'Sonatine': 1
-                    })
-                }),
-                entries: List.of('Zatoichi')
+                pair: List.of('Sonatine', 'Hana Bi'),
+                tally: Map({
+                    'Sonatine': 1
+                })
             }));
         });
 
         it('adds to existing tally', () => {
 
             const state = Map({
-                vote: Map({
-                    pair: List.of('Sonatine', 'Hana Bi'),
-                    tally: Map({
-                        'Sonatine': 4,
-                        'Hana Bi': 3
-                    })
-                }),
-                entries: List.of('Zatoichi')
+                pair: List.of('Sonatine', 'Hana Bi'),
+                tally: Map({
+                    'Sonatine': 4,
+                    'Hana Bi': 3
+                })
             });
 
             const nextState = vote(state, 'Hana Bi');
 
             expect(nextState).to.equal(Map({
-                vote: Map({
-                    pair: List.of('Sonatine', 'Hana Bi'),
-                    tally: Map({
-                        'Sonatine': 4,
-                        'Hana Bi': 4
-                    })
-                }),
-                entries: List.of('Zatoichi')
+                pair: List.of('Sonatine', 'Hana Bi'),
+                tally: Map({
+                    'Sonatine': 4,
+                    'Hana Bi': 4
+                })
             }));
         });
     });
