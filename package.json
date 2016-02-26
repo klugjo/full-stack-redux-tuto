@@ -4,6 +4,7 @@
   "description": "My take on the amazing tut at http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node index.js",
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --require ./test/test-helper.js --recursive",
     "test:watch": "npm run test -- --watch"
   },
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "immutable": "^3.7.6",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "socket.io": "^1.4.5"
   }
 }
