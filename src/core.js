@@ -13,3 +13,10 @@ export function next(state) {
     });
 }
 
+export function vote(state, entry) {
+    return state.updateIn(
+        ['vote', 'tally', entry], // path to property: vote.tally[entry]
+        0, // default value if not set
+        tally => tally + 1 // operation
+    );
+}

@@ -1,7 +1,7 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setEntries, next} from '../src/core';
+import {setEntries, next, vote} from '../src/core';
 
 describe('application logic', () => {
 
@@ -42,6 +42,58 @@ describe('application logic', () => {
                 }),
                 entries: List.of('Zatoichi')
             }))
+        });
+    });
+
+    describe('vote', () => {
+
+        it('creates a tally for the voted entry', () => {
+
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Hana Bi')
+                }),
+                entries: List.of('Zatoichi')
+            });
+
+            const nextState = vote(state, 'Sonatine');
+
+            expect(nextState).to.equal(Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Hana Bi'),
+                    tally: Map({
+                        'Sonatine': 1
+                    })
+                }),
+                entries: List.of('Zatoichi')
+            }));
+        });
+
+        it('adds to existing tally', () => {
+
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Hana Bi'),
+                    tally: Map({
+                        'Sonatine': 4,
+                        'Hana Bi': 3
+                    })
+                }),
+                entries: List.of('Zatoichi')
+            });
+
+            const nextState = vote(state, 'Hana Bi');
+
+            expect(nextState).to.equal(Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Hana Bi'),
+                    tally: Map({
+                        'Sonatine': 4,
+                        'Hana Bi': 4
+                    })
+                }),
+                entries: List.of('Zatoichi')
+            }));
         });
     });
 });
