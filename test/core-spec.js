@@ -43,6 +43,50 @@ describe('application logic', () => {
                 entries: List.of('Zatoichi')
             }))
         });
+
+        it('puts the winner of current vote back to entries', () => {
+
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Hana Bi'),
+                    tally: Map({
+                        'Sonatine': 4,
+                        'Hana Bi': 3
+                    })
+                }),
+                entries: List.of('Zatoichi', 'Dolls', 'Battle Royale')
+            });
+
+            const nextState = next(state);
+            expect(nextState).to.equal(Map({
+                vote: Map({
+                    pair: List.of('Zatoichi', 'Dolls')
+                }),
+                entries: List.of('Battle Royale', 'Sonatine')
+            }));
+        });
+
+        it('puts both back in case of a tied vote', () => {
+
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Hana Bi'),
+                    tally: Map({
+                        'Sonatine': 4,
+                        'Hana Bi': 4
+                    })
+                }),
+                entries: List.of('Zatoichi', 'Dolls', 'Battle Royale')
+            });
+
+            const nextState = next(state);
+            expect(nextState).to.equal(Map({
+                vote: Map({
+                    pair: List.of('Zatoichi', 'Dolls')
+                }),
+                entries: List.of('Battle Royale', 'Sonatine', 'Hana Bi')
+            }));
+        });
     });
 
     describe('vote', () => {
