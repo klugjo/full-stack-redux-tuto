@@ -62,4 +62,20 @@ describe('reducer', () => {
             entries: ['Star Wars']
         }));
     });
+
+    it('can be used with reduce', () => {
+        const actions = [
+            {type: 'SET_ENTRIES', entries: ['Star Wars', 'Indiana Jones']},
+            {type: 'NEXT'},
+            {type: 'VOTE', entry: 'Star Wars'},
+            {type: 'VOTE', entry: 'Indiana Jones'},
+            {type: 'VOTE', entry: 'Star Wars'},
+            {type: 'NEXT'}
+        ];
+        const finalState = actions.reduce(reducer, Map());
+
+        expect(finalState).to.equal(fromJS({
+            winner: 'Star Wars'
+        }));
+    });
 });
