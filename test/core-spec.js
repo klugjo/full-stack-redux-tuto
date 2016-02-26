@@ -1,7 +1,7 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setEntries} from '../src/core';
+import {setEntries, next} from '../src/core';
 
 describe('application logic', () => {
 
@@ -26,6 +26,22 @@ describe('application logic', () => {
                 entries: List.of('Sonatine', 'Hana Bi')
             }));
         });
+    });
 
+    describe('next', () => {
+
+        it('takes the next tow entries under vote', () => {
+
+            const state = Map({
+                entries: List.of('Sonatine', 'Hana Bi', 'Zatoichi')
+            });
+            const nextState = next(state);
+            expect(nextState).to.equal(Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Hana Bi')
+                }),
+                entries: List.of('Zatoichi')
+            }))
+        });
     });
 });
