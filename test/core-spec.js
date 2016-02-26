@@ -87,6 +87,25 @@ describe('application logic', () => {
                 entries: List.of('Battle Royale', 'Sonatine', 'Hana Bi')
             }));
         });
+
+        it('marks winner when just one entry left', () => {
+
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Sonatine', 'Battle Royale'),
+                    tally: Map({
+                        'Sonatine': 4,
+                        'Battle Royale': 3
+                    })
+                }),
+                entries: List()
+            });
+
+            const nextState = next(state);
+            expect(nextState).to.equal(Map({
+                winner: 'Sonatine'
+            }));
+        });
     });
 
     describe('vote', () => {
