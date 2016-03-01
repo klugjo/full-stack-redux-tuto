@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
-    "test:Watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
   "author": "Klughertz Jonathan <klughertz.j@gmail.com> (http://klugjo.github.io/)",
@@ -32,6 +32,7 @@
   "dependencies": {
     "immutable": "^3.7.6",
     "react": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7"
   }
 }
